@@ -226,7 +226,17 @@ ClassicEditor.defaultConfig = {
 			'mergeTableCells'
 		]
 	},
-	// This value must be kept in sync with the language defined in webpack.config.js.
+	link: {
+        decorators: {
+            isExternal: {
+					mode: 'automatic',
+					callback: url => url.startsWith('http'),
+					attributes: {
+					target: '_blank'
+				}
+          	},
+        }
+    },
 	language: 'en'
 };
 
