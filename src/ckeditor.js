@@ -53,6 +53,10 @@ import Underline from '@ckeditor/ckeditor5-basic-styles/src/underline';
 import UploadAdapter from '@ckeditor/ckeditor5-adapter-ckfinder/src/uploadadapter';
 
 
+// custom plugins
+import AddStyleOnImageAlignPlugin from './add-style-on-image-align/plugin';
+import AddStyleOnImageInsertPlugin from './add-style-on-image-insert/plugin';
+
 export default class ClassicEditor extends ClassicEditorBase {}
 
 // Plugins to include in the build.
@@ -103,6 +107,10 @@ ClassicEditor.builtinPlugins = [
 	TextTransformation,
 	Underline,
 	UploadAdapter,
+
+	// custom plugins
+	AddStyleOnImageAlignPlugin,
+	AddStyleOnImageInsertPlugin
 ];
 
 // Editor configuration.
@@ -171,16 +179,15 @@ ClassicEditor.defaultConfig = {
 	image: {
 		toolbar: [
 			'imageStyle:alignLeft',
+			'imageStyle:alignCenter',
 			'imageStyle:alignRight',
-			'imageStyle:full',
-			'imageStyle:side',
 			'|',
 			'imageTextAlternative',
-			'|',
-			'resizeImage:25',
-			'resizeImage:50',
-            'resizeImage:75',
-            'resizeImage:original'
+			// '|',
+			// 'resizeImage:25',
+			// 'resizeImage:50',
+            // 'resizeImage:75',
+            // 'resizeImage:original'
 		],
 		styles: [
 			// This option is equal to a situation where no style is applied.
@@ -196,28 +203,28 @@ ClassicEditor.defaultConfig = {
 
 			'alignCenter'
 		],
-		resizeOptions: [
-            {
-                name: 'resizeImage:original',
-                value: null,
-                icon: 'original'
-            },
-            {
-                name: 'resizeImage:25',
-                value: '25',
-                icon: 'small'
-            },
-            {
-                name: 'resizeImage:50',
-                value: '50',
-                icon: 'medium'
-            },
-            {
-                name: 'resizeImage:75',
-                value: '75',
-                icon: 'large'
-            }
-        ],
+		// resizeOptions: [
+        //     {
+        //         name: 'resizeImage:original',
+        //         value: null,
+        //         icon: 'original'
+        //     },
+        //     {
+        //         name: 'resizeImage:25',
+        //         value: '25',
+        //         icon: 'small'
+        //     },
+        //     {
+        //         name: 'resizeImage:50',
+        //         value: '50',
+        //         icon: 'medium'
+        //     },
+        //     {
+        //         name: 'resizeImage:75',
+        //         value: '75',
+        //         icon: 'large'
+        //     }
+        // ],
 	},
 	table: {
 		contentToolbar: [
