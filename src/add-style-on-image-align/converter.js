@@ -46,7 +46,7 @@ export function convertModelAttributeToViewStyle(evt, data, conversionApi) {
 /**
  * this function is duplicated from @ckeditor/ckeditor5-image/src/imagestyle/converters::viewToModelStyleAttribute(styles)
  *
- * the difference is calculation of `modelImageElement` variable on line 56
+ * the difference is calculation of `modelImageElement` variable
  * this difference is caused by changes of default dataDowncast behaviour for image model
  */
 export function convertViewStyleToModelAttribute(styles) {
