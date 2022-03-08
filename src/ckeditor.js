@@ -54,6 +54,7 @@ import UploadAdapter from '@ckeditor/ckeditor5-adapter-ckfinder/src/uploadadapte
 
 
 // custom plugins
+import ImageDataDowncastPlugin from "./image-data-downcast/plugin";
 import AddStyleOnImageAlignPlugin from './add-style-on-image-align/plugin';
 import AddStyleOnImageInsertPlugin from './add-style-on-image-insert/plugin';
 
@@ -109,6 +110,7 @@ ClassicEditor.builtinPlugins = [
 	UploadAdapter,
 
 	// custom plugins
+	ImageDataDowncastPlugin,
 	AddStyleOnImageAlignPlugin,
 	AddStyleOnImageInsertPlugin
 ];
