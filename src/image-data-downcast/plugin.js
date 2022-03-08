@@ -11,7 +11,7 @@
  *  </p>
  *
  *
- *  Why default was changed:
+ *  Why default behavior was changed:
  *    - `<figure>` element is not supported in MicrosoftOutlook in Microsoft 365 Office
  *    - because of `<figure>` element MicrosoftOutlook in Microsoft 365 Office makes significant changes of email body
  *    - through empirical way `<p>` element is not modified
