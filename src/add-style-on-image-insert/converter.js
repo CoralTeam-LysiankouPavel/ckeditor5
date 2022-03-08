@@ -1,3 +1,9 @@
+/**
+ * By default dataDowncast process of image model adds only classes (not styles).
+ * These classes are cut almost bu every email client.
+ * That's why we have to extend default dataDowncast process by adding styles manually.
+ */
+
 export function modelAttributeToViewStyle(evt, data, conversionApi) {
 
     const figure = conversionApi.mapper.toViewElement( data.item );
