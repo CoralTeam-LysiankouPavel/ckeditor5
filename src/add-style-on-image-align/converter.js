@@ -10,7 +10,8 @@ const ATTRIBUTE_ALIGN_SIDE   = 'side';
  */
 export function convertModelAttributeToViewStyle(evt, data, conversionApi) {
 
-    const figure = conversionApi.mapper.toViewElement( data.item );
+    // <p>...</p>
+    const pViewElement = conversionApi.mapper.toViewElement( data.item );
     const viewWriter = conversionApi.writer;
 
     switch (data.attributeNewValue) {
@@ -19,7 +20,7 @@ export function convertModelAttributeToViewStyle(evt, data, conversionApi) {
                 'float'       : 'left',
                 'margin-right': '1.5em',
                 'text-align'  : 'left'
-            }, figure);
+            }, pViewElement);
 
             break;
 
@@ -29,7 +30,7 @@ export function convertModelAttributeToViewStyle(evt, data, conversionApi) {
                 'float'      : 'right',
                 'margin-left': '1.5em',
                 'text-align' : 'right',
-            }, figure);
+            }, pViewElement);
 
             break;
 
@@ -39,7 +40,7 @@ export function convertModelAttributeToViewStyle(evt, data, conversionApi) {
                 'margin-left' : 'auto',
                 'margin-right': 'auto',
                 'text-align'  : 'center'
-            }, figure);
+            }, pViewElement);
     }
 }
 
