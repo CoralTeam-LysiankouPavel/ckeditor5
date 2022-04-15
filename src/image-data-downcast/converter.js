@@ -1,12 +1,14 @@
 /**
- * creates `<p><img></p>` html structure
+ * create `<p><img></p>` html structure
  */
-
 export function imageDataDowncast(writer) {
+    // <img>
     const emptyElement = writer.createEmptyElement('img');
-    const figure = writer.createContainerElement('p', {class: 'image'});
+    // <p></p>
+    const p = writer.createContainerElement('p', {class: 'image'});
 
-    writer.insert(writer.createPositionAt(figure, 0), emptyElement);
+    // <p><img></p>
+    writer.insert(writer.createPositionAt(p, 0), emptyElement);
 
-    return figure;
+    return p;
 }

@@ -6,7 +6,8 @@
 
 export function modelAttributeToViewStyle(evt, data, conversionApi) {
 
-    const figure = conversionApi.mapper.toViewElement( data.item );
+    // <p>...</p>
+    const pViewElement = conversionApi.mapper.toViewElement( data.item );
     const viewWriter = conversionApi.writer;
 
     viewWriter.setStyle({
@@ -14,9 +15,9 @@ export function modelAttributeToViewStyle(evt, data, conversionApi) {
         'clear'     : 'both',
         'text-align': 'center',
         'margin'    : '1em auto'
-    }, figure);
+    }, pViewElement);
 
-    for (const childViewElement of figure.getChildren()) {
+    for (const childViewElement of pViewElement.getChildren()) {
         if (childViewElement.name === 'img') {
             viewWriter.setStyle({
                 'display'  : 'block',
