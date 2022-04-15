@@ -19,5 +19,19 @@ export default class AddStyleOnImageResizedPlugin extends Plugin {
                 dispatcher => dispatcher.on('attribute:width:image', modelAttributeToViewStyle),
                 { priority: 'low' }
             );
+
+        editor.conversion.for( 'upcast' )
+            .attributeToAttribute( {
+                view: {
+                    name: 'p',
+                    styles: {
+                        width: /.+/
+                    }
+                },
+                model: {
+                    key: 'width',
+                    value: viewElement => viewElement.getStyle( 'width' )
+                }
+            } );
     }
 }

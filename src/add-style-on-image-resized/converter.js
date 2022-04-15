@@ -6,10 +6,6 @@
 const MAX_WIDTH = 1000;
 
 export function modelAttributeToViewStyle(evt, data, conversionApi) {
-    if (!conversionApi.consumable.consume(data.item, evt.name)) {
-        return;
-    }
-
     // <p>...</p>
     const pViewElement = conversionApi.mapper.toViewElement( data.item );
     const viewWriter = conversionApi.writer;
@@ -19,6 +15,7 @@ export function modelAttributeToViewStyle(evt, data, conversionApi) {
             if (data.attributeNewValue !== null) {
                 const imageWidthPercent = parseFloat(data.attributeNewValue.replaceAll('%', ''));
                 const imageWidth = MAX_WIDTH * imageWidthPercent / 100;
+
                 viewWriter.setAttribute('width', imageWidth + 'px', childViewElement)
             } else {
                 viewWriter.removeAttribute('width', childViewElement);
