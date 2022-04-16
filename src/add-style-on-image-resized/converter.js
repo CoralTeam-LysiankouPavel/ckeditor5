@@ -16,7 +16,7 @@ export function modelAttributeToViewStyle(evt, data, conversionApi) {
                 const imageWidthPercent = parseFloat(data.attributeNewValue.replaceAll('%', ''));
                 const imageWidth = MAX_WIDTH * imageWidthPercent / 100;
 
-                viewWriter.setAttribute('width', imageWidth + 'px', childViewElement)
+                viewWriter.setAttribute('width', imageWidth, childViewElement)
             } else {
                 viewWriter.removeAttribute('width', childViewElement);
             }
