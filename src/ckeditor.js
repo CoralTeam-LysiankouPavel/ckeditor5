@@ -59,6 +59,7 @@ import AddStyleOnImageAlignPlugin from './add-style-on-image-align/plugin';
 import AddStyleOnImageInsertPlugin from './add-style-on-image-insert/plugin';
 import AddStyleOnImageResizedPlugin from "./add-style-on-image-resized/plugin";
 import InsertBannerPlugin from "./insert-banner/plugin";
+import InsertFooterPlugin from "./insert-footer/plugin";
 
 export default class ClassicEditor extends ClassicEditorBase {}
 
@@ -116,7 +117,8 @@ ClassicEditor.builtinPlugins = [
 	AddStyleOnImageAlignPlugin,
 	AddStyleOnImageInsertPlugin,
 	AddStyleOnImageResizedPlugin,
-	InsertBannerPlugin
+	InsertBannerPlugin,
+	InsertFooterPlugin
 ];
 
 // Editor configuration.
@@ -154,7 +156,9 @@ ClassicEditor.defaultConfig = {
 			'|',
 			'selectAll',
 			'|',
-			'insertBanner'
+			'insertBanner',
+			'|',
+			'insertFooter'
 		],
 		shouldNotGroupWhenFull: true
 	},
@@ -254,7 +258,8 @@ ClassicEditor.defaultConfig = {
     },
 	language: 'en',
 	app: {
-		banners: []
+		banners: [],
+		footers: []
 	}
 };
 
