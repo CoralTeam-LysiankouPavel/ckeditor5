@@ -3,12 +3,6 @@ import Command from "@ckeditor/ckeditor5-core/src/command";
 export default class InsertFooterCommand extends Command {
     execute(text, href) {
         const editor = this.editor;
-        const path = editor.model.document.selection.focus.path;
-        const offset = path[1];
-
-        if (offset !== 0) {
-            editor.execute('enter');
-        }
 
         editor.execute('input', {'text': text});
         editor.model.change(writer => this._selectInsertedText(writer, text.length));
