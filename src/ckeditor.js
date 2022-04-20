@@ -58,6 +58,8 @@ import ImageDataDowncastPlugin from "./image-data-downcast/plugin";
 import AddStyleOnImageAlignPlugin from './add-style-on-image-align/plugin';
 import AddStyleOnImageInsertPlugin from './add-style-on-image-insert/plugin';
 import AddStyleOnImageResizedPlugin from "./add-style-on-image-resized/plugin";
+import InsertBannerPlugin from "./insert-banner/plugin";
+import InsertFooterPlugin from "./insert-footer/plugin";
 
 export default class ClassicEditor extends ClassicEditorBase {}
 
@@ -114,7 +116,9 @@ ClassicEditor.builtinPlugins = [
 	ImageDataDowncastPlugin,
 	AddStyleOnImageAlignPlugin,
 	AddStyleOnImageInsertPlugin,
-	AddStyleOnImageResizedPlugin
+	AddStyleOnImageResizedPlugin,
+	InsertBannerPlugin,
+	InsertFooterPlugin
 ];
 
 // Editor configuration.
@@ -150,7 +154,11 @@ ClassicEditor.defaultConfig = {
 			// 'pageBreak'
 			'removeFormat',
 			'|',
-			'selectAll'
+			'selectAll',
+			'|',
+			'insertBanner',
+			'|',
+			'insertFooter'
 		],
 		shouldNotGroupWhenFull: true
 	},
@@ -248,7 +256,11 @@ ClassicEditor.defaultConfig = {
           	},
         }
     },
-	language: 'en'
+	language: 'en',
+	app: {
+		banners: [],
+		footers: []
+	}
 };
 
 function SpecialCharactersEmoji( editor ) {

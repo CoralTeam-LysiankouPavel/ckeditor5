@@ -1,0 +1,10 @@
+.ck.ck-dropdown .ck-button.ck-insert-footer-button .ck-button__label {
+    width: 4em;
+}
+
+.ck.ck-code-block-footers .ck-dropdown__panel {
+    /* There could be dozens of footers. Use scroll to prevent a 10e6px dropdown. */
+    max-height: 250px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}

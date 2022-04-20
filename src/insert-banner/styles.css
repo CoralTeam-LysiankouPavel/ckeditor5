@@ -1,0 +1,10 @@
+.ck.ck-dropdown .ck-button.ck-insert-banner-button .ck-button__label {
+    width: 4em;
+}
+
+.ck.ck-code-block-banners .ck-dropdown__panel {
+    /* There could be dozens of banners. Use scroll to prevent a 10e6px dropdown. */
+    max-height: 250px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
