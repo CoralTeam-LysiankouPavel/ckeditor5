@@ -4,10 +4,23 @@ export default class InsertFooterCommand extends Command {
     execute(text, href) {
         const editor = this.editor;
 
-        editor.execute('input', {'text': text});
-        editor.model.change(writer => this._selectInsertedText(writer, text.length));
-        editor.execute('link', href);
-        editor.model.change(writer => this._selectTheEndOfInsertedText(writer));
+        editor.model.change(writer => {
+            const selection = editor.model.document.selection;
+
+            if (!selection.isCollapsed) {
+                editor.model.deleteContent(selection);
+            }
+
+            const position = selection.getFirstPosition();
+
+            const attributes = new Map();
+            attributes.set('linkHref', href);
+
+            editor.model.insertContent(
+                writer.createText(text, attributes),
+                position
+            );
+        });
     }
 
     refresh() {
@@ -18,34 +31,5 @@ export default class InsertFooterCommand extends Command {
          * When current path contains exactly 5 coordinates, that means that focus is inside table.
          */
         this.isEnabled = (path.length === 2 || path.length === 5);
-    }
-
-    _selectInsertedText(writer, textLength) {
-        const editor = this.editor;
-        const document = editor.model.document;
-        const root = document.getRoot();
-
-        const endPath = document.selection.focus.path;
-
-        const startPath = [...endPath];
-        startPath[startPath.length - 1] = startPath[startPath.length - 1] - textLength;
-
-        const range = editor.model.createRange(
-            editor.model.createPositionFromPath(root, startPath),
-            editor.model.createPositionFromPath(root, endPath)
-        );
-
-        writer.setSelection(range);
-    }
-
-    _selectTheEndOfInsertedText(writer) {
-        const editor = this.editor;
-        const document = editor.model.document;
-        const root = document.getRoot();
-
-        const range = editor.model.createRange(
-            editor.model.createPositionFromPath(root, document.selection.focus.path)
-        );
-        writer.setSelection(range);
     }
 }
