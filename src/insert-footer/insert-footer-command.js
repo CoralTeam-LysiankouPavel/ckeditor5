@@ -15,8 +15,9 @@ export default class InsertFooterCommand extends Command {
 
         /**
          * When current path contains exactly 2 coordinates, that means that focus is on string.
+         * When current path contains exactly 5 coordinates, that means that focus is inside table.
          */
-        this.isEnabled = path.length === 2;
+        this.isEnabled = (path.length === 2 || path.length === 5);
     }
 
     _selectInsertedText(writer, textLength) {
@@ -24,14 +25,16 @@ export default class InsertFooterCommand extends Command {
         const document = editor.model.document;
         const root = document.getRoot();
 
-        const path = document.selection.focus.path;
-        const line = path[0];
-        const offset = path[1];
+        const endPath = document.selection.focus.path;
+
+        const startPath = [...endPath];
+        startPath[startPath.length - 1] = startPath[startPath.length - 1] - textLength;
 
         const range = editor.model.createRange(
-            editor.model.createPositionFromPath(root, [line, offset - textLength]),
-            editor.model.createPositionFromPath(root, [line, offset])
+            editor.model.createPositionFromPath(root, startPath),
+            editor.model.createPositionFromPath(root, endPath)
         );
+
         writer.setSelection(range);
     }
 
