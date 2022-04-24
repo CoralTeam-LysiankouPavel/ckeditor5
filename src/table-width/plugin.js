@@ -21,15 +21,15 @@ export default class TableWidthPlugin extends Plugin {
         editor.conversion
             .for('downcast')
             .add(
-                dispatcher => dispatcher.on('attribute:width:table', modelAttributeToViewStyle),
+                dispatcher => dispatcher.on(`attribute:${ATTRIBUTE_WIDTH}:table`, modelAttributeToViewStyle),
                 { priority: 'low' }
             );
 
         editor.conversion
-            .for( 'upcast' )
+            .for('upcast')
             .attributeToAttribute({
-                view: 'width',
-                model: 'width',
+                view: ATTRIBUTE_WIDTH,
+                model: ATTRIBUTE_WIDTH,
                 converterPriority: 'low'
             });
 
@@ -48,7 +48,7 @@ export default class TableWidthPlugin extends Plugin {
                     .findAncestor('table');
 
                 if (table !== null) {
-                    writer.setAttribute('width', options.width, table);
+                    writer.setAttribute(ATTRIBUTE_WIDTH, options.width, table);
                 }
             });
         }, { priority: 'low' });
