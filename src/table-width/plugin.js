@@ -1,3 +1,10 @@
+/**
+ * - Plugin is used to provide functionality to support table width.
+ *
+ * - Currently setting table width is possible only programmatically,
+ *   there is no functionality to change table width through UI
+ */
+
 import { Plugin } from 'ckeditor5/src/core';
 import { modelAttributeToViewStyle } from "./converter";
 
