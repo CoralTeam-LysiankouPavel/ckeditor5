@@ -26,6 +26,7 @@ import ImageStyle from '@ckeditor/ckeditor5-image/src/imagestyle';
 import ImageToolbar from '@ckeditor/ckeditor5-image/src/imagetoolbar';
 import ImageUpload from '@ckeditor/ckeditor5-image/src/imageupload';
 import Indent from '@ckeditor/ckeditor5-indent/src/indent';
+import IndentBlock from '@ckeditor/ckeditor5-indent/src/indentblock';
 import Italic from '@ckeditor/ckeditor5-basic-styles/src/italic';
 import Link from '@ckeditor/ckeditor5-link/src/link';
 import List from '@ckeditor/ckeditor5-list/src/list';
@@ -61,6 +62,7 @@ import AddStyleOnImageAlignPlugin from './add-style-on-image-align/plugin';
 import AddStyleOnImageInsertPlugin from './add-style-on-image-insert/plugin';
 import AddStyleOnImageResizedPlugin from "./add-style-on-image-resized/plugin";
 import AddStyleOnTableInsertPlugin from  "./add-style-on-table-insert/plugin";
+import ExtendParagraphSchemaPlugin from "./extend-paragraph-schema/plugin";
 import InsertBannerPlugin from "./insert-banner/plugin";
 import InsertFooterPlugin from "./insert-footer/plugin";
 import TableWidthPlugin from "./table-width/plugin";
@@ -89,6 +91,7 @@ ClassicEditor.builtinPlugins = [
 	ImageToolbar,
 	ImageUpload,
 	Indent,
+	IndentBlock,
 	Italic,
 	Link,
 	List,
@@ -124,6 +127,7 @@ ClassicEditor.builtinPlugins = [
 	AddStyleOnImageInsertPlugin,
 	AddStyleOnImageResizedPlugin,
 	AddStyleOnTableInsertPlugin,
+	ExtendParagraphSchemaPlugin,
 	InsertBannerPlugin,
 	InsertFooterPlugin,
 	TableWidthPlugin
@@ -264,6 +268,10 @@ ClassicEditor.defaultConfig = {
           	},
         }
     },
+	indentBlock: {
+		offset: 0.5,
+		unit: 'in'
+	},
 	language: 'en',
 	app: {
 		banners: [],
