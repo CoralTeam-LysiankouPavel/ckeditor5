@@ -18,3 +18,17 @@ export function modelAttributeToViewStyle(evt, data, conversionApi) {
         }
     }
 }
+
+export function viewStyleToModelAttribute(evt, data, conversionApi) {
+    const width = data.viewItem.getAttribute(ATTRIBUTE_WIDTH);
+
+    if (width === undefined) {
+        return;
+    }
+
+    const writer = conversionApi.writer;
+
+    for (const item of data.modelRange.getItems({ shallow: true })) {
+        writer.setAttribute(ATTRIBUTE_WIDTH, width, item);
+    }
+}

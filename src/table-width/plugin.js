@@ -6,7 +6,7 @@
  */
 
 import { Plugin } from 'ckeditor5/src/core';
-import { modelAttributeToViewStyle } from "./converter";
+import { modelAttributeToViewStyle, viewStyleToModelAttribute } from "./converter";
 
 export const ATTRIBUTE_WIDTH = 'width';
 
@@ -27,11 +27,7 @@ export default class TableWidthPlugin extends Plugin {
 
         editor.conversion
             .for('upcast')
-            .attributeToAttribute({
-                view: ATTRIBUTE_WIDTH,
-                model: ATTRIBUTE_WIDTH,
-                converterPriority: 'low'
-            });
+            .add(dispatcher => dispatcher.on('element:table',  viewStyleToModelAttribute));
 
         editor.commands.get('insertTable').on('execute', (evt, args) => {
             editor.model.change(writer => {
