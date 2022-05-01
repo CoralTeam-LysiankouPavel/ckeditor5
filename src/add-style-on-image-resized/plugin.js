@@ -12,16 +12,19 @@ export default class AddStyleOnImageResizedPlugin extends Plugin {
 
     init() {
         const editor = this.editor;
+        const containerWidth = editor.config.get('app.containerWidth');
 
         editor.conversion
             .for('dataDowncast')
             .add(
-                dispatcher => dispatcher.on('attribute:width:image', modelAttributeToViewStyle),
+                dispatcher => dispatcher.on(
+                    'attribute:width:image',
+                    (evt, data, conversionApi) => modelAttributeToViewStyle(evt, data, conversionApi, containerWidth)),
                 { priority: 'low' }
             );
 
-        editor.conversion.for( 'upcast' )
-            .attributeToAttribute( {
+        editor.conversion.for('upcast')
+            .attributeToAttribute({
                 view: {
                     name: 'p',
                     styles: {
@@ -30,8 +33,8 @@ export default class AddStyleOnImageResizedPlugin extends Plugin {
                 },
                 model: {
                     key: 'width',
-                    value: viewElement => viewElement.getStyle( 'width' )
+                    value: viewElement => viewElement.getStyle('width')
                 }
-            } );
+            });
     }
 }

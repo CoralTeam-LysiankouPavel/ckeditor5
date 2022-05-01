@@ -26,6 +26,7 @@ import ImageStyle from '@ckeditor/ckeditor5-image/src/imagestyle';
 import ImageToolbar from '@ckeditor/ckeditor5-image/src/imagetoolbar';
 import ImageUpload from '@ckeditor/ckeditor5-image/src/imageupload';
 import Indent from '@ckeditor/ckeditor5-indent/src/indent';
+import IndentBlock from '@ckeditor/ckeditor5-indent/src/indentblock';
 import Italic from '@ckeditor/ckeditor5-basic-styles/src/italic';
 import Link from '@ckeditor/ckeditor5-link/src/link';
 import List from '@ckeditor/ckeditor5-list/src/list';
@@ -55,11 +56,16 @@ import UploadAdapter from '@ckeditor/ckeditor5-adapter-ckfinder/src/uploadadapte
 
 // custom plugins
 import ImageDataDowncastPlugin from "./image-data-downcast/plugin";
+import AddBorderToTableCellPlugin from "./add-border-to-table-cell/plugin";
+import AddPuddingToTableCellPlugin from "./add-padding-to-table-cell/plugin";
 import AddStyleOnImageAlignPlugin from './add-style-on-image-align/plugin';
 import AddStyleOnImageInsertPlugin from './add-style-on-image-insert/plugin';
 import AddStyleOnImageResizedPlugin from "./add-style-on-image-resized/plugin";
+import AddStyleOnTableInsertPlugin from  "./add-style-on-table-insert/plugin";
+import ExtendParagraphSchemaPlugin from "./extend-paragraph-schema/plugin";
 import InsertBannerPlugin from "./insert-banner/plugin";
 import InsertFooterPlugin from "./insert-footer/plugin";
+import TableWidthPlugin from "./table-width/plugin";
 
 export default class ClassicEditor extends ClassicEditorBase {}
 
@@ -85,6 +91,7 @@ ClassicEditor.builtinPlugins = [
 	ImageToolbar,
 	ImageUpload,
 	Indent,
+	IndentBlock,
 	Italic,
 	Link,
 	List,
@@ -114,11 +121,16 @@ ClassicEditor.builtinPlugins = [
 
 	// custom plugins
 	ImageDataDowncastPlugin,
+	AddBorderToTableCellPlugin,
+	AddPuddingToTableCellPlugin,
 	AddStyleOnImageAlignPlugin,
 	AddStyleOnImageInsertPlugin,
 	AddStyleOnImageResizedPlugin,
+	AddStyleOnTableInsertPlugin,
+	ExtendParagraphSchemaPlugin,
 	InsertBannerPlugin,
-	InsertFooterPlugin
+	InsertFooterPlugin,
+	TableWidthPlugin
 ];
 
 // Editor configuration.
@@ -256,10 +268,17 @@ ClassicEditor.defaultConfig = {
           	},
         }
     },
+	indentBlock: {
+		offset: 0.5,
+		unit: 'in'
+	},
 	language: 'en',
 	app: {
 		banners: [],
-		footers: []
+		footers: [],
+		containerWidth: 1000,
+		tableCellPadding: '15px',
+		tableCellBorder: '1px solid #bfbfbf;',
 	}
 };
 
