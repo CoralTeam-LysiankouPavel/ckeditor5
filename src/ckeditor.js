@@ -200,6 +200,136 @@ ClassicEditor.defaultConfig = {
 		],
 		supportAllValues: true
 	},
+	fontColor: {
+		colors: [
+			{
+				color: '#000000',
+				label: 'Black'
+			},
+			{
+				color: '#4D4D4D',
+				label: 'Dim grey'
+			},
+			{
+				color: '#999999',
+				label: 'Grey'
+			},
+			{
+				color: '#E6E6E6',
+				label: 'Light grey'
+			},
+			{
+				color: '#FFFFFF',
+				label: 'White'
+			},
+			{
+				color: '#E64C4C',
+				label: 'Red'
+			},
+			{
+				color: '#E6994C',
+				label: 'Orange'
+			},
+			{
+				color: '#E6E64C',
+				label: 'Yellow'
+			},
+			{
+				color: '#99E64C',
+				label: 'Light green'
+			},
+			{
+				color: '#4CE64C',
+				label: 'Green'
+			},
+			{
+				color: '#4CE699',
+				label: 'Aquamarine'
+			},
+			{
+				color: '#4CE6E6',
+				label: 'Turquoise'
+			},
+			{
+				color: '#4C99E6',
+				label: 'Light blue'
+			},
+			{
+				color: '#4C4CE6',
+				label: 'Blue'
+			},
+			{
+				color: '#994CE6',
+				label: 'Purple'
+			}
+		],
+		documentColors: 0
+	},
+	fontBackgroundColor: {
+		colors: [
+			{
+				color: '#000000',
+				label: 'Black'
+			},
+			{
+				color: '#4D4D4D',
+				label: 'Dim grey'
+			},
+			{
+				color: '#999999',
+				label: 'Grey'
+			},
+			{
+				color: '#E6E6E6',
+				label: 'Light grey'
+			},
+			{
+				color: '#FFFFFF',
+				label: 'White'
+			},
+			{
+				color: '#E64C4C',
+				label: 'Red'
+			},
+			{
+				color: '#E6994C',
+				label: 'Orange'
+			},
+			{
+				color: '#E6E64C',
+				label: 'Yellow'
+			},
+			{
+				color: '#99E64C',
+				label: 'Light green'
+			},
+			{
+				color: '#4CE64C',
+				label: 'Green'
+			},
+			{
+				color: '#4CE699',
+				label: 'Aquamarine'
+			},
+			{
+				color: '#4CE6E6',
+				label: 'Turquoise'
+			},
+			{
+				color: '#4C99E6',
+				label: 'Light blue'
+			},
+			{
+				color: '#4C4CE6',
+				label: 'Blue'
+			},
+			{
+				color: '#994CE6',
+				label: 'Purple'
+			}
+		],
+		documentColors: 0
+	},
 	image: {
 		toolbar: [
 			'imageStyle:alignLeft',
