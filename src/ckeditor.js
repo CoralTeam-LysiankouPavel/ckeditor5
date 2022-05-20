@@ -56,7 +56,6 @@ import UploadAdapter from '@ckeditor/ckeditor5-adapter-ckfinder/src/uploadadapte
 
 // custom plugins
 import ImageDataDowncastPlugin from "./image-data-downcast/plugin";
-import AddBorderToTableCellPlugin from "./add-border-to-table-cell/plugin";
 import AddPuddingToTableCellPlugin from "./add-padding-to-table-cell/plugin";
 import AddStyleOnImageAlignPlugin from './add-style-on-image-align/plugin';
 import AddStyleOnImageInsertPlugin from './add-style-on-image-insert/plugin';
@@ -121,7 +120,6 @@ ClassicEditor.builtinPlugins = [
 
 	// custom plugins
 	ImageDataDowncastPlugin,
-	AddBorderToTableCellPlugin,
 	AddPuddingToTableCellPlugin,
 	AddStyleOnImageAlignPlugin,
 	AddStyleOnImageInsertPlugin,
