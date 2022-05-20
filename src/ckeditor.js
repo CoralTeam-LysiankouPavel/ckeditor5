@@ -56,7 +56,6 @@ import UploadAdapter from '@ckeditor/ckeditor5-adapter-ckfinder/src/uploadadapte
 
 // custom plugins
 import ImageDataDowncastPlugin from "./image-data-downcast/plugin";
-import AddBorderToTableCellPlugin from "./add-border-to-table-cell/plugin";
 import AddPuddingToTableCellPlugin from "./add-padding-to-table-cell/plugin";
 import AddStyleOnImageAlignPlugin from './add-style-on-image-align/plugin';
 import AddStyleOnImageInsertPlugin from './add-style-on-image-insert/plugin';
@@ -66,6 +65,7 @@ import ExtendParagraphSchemaPlugin from "./extend-paragraph-schema/plugin";
 import InsertBannerPlugin from "./insert-banner/plugin";
 import InsertFooterPlugin from "./insert-footer/plugin";
 import TableWidthPlugin from "./table-width/plugin";
+import TableAlignPlugin from "./table-align/plugin";
 
 export default class ClassicEditor extends ClassicEditorBase {}
 
@@ -121,7 +121,6 @@ ClassicEditor.builtinPlugins = [
 
 	// custom plugins
 	ImageDataDowncastPlugin,
-	AddBorderToTableCellPlugin,
 	AddPuddingToTableCellPlugin,
 	AddStyleOnImageAlignPlugin,
 	AddStyleOnImageInsertPlugin,
@@ -130,7 +129,8 @@ ClassicEditor.builtinPlugins = [
 	ExtendParagraphSchemaPlugin,
 	InsertBannerPlugin,
 	InsertFooterPlugin,
-	TableWidthPlugin
+	TableWidthPlugin,
+	TableAlignPlugin
 ];
 
 // Editor configuration.
