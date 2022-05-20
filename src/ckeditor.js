@@ -65,6 +65,7 @@ import ExtendParagraphSchemaPlugin from "./extend-paragraph-schema/plugin";
 import InsertBannerPlugin from "./insert-banner/plugin";
 import InsertFooterPlugin from "./insert-footer/plugin";
 import TableWidthPlugin from "./table-width/plugin";
+import TableAlignPlugin from "./table-align/plugin";
 
 export default class ClassicEditor extends ClassicEditorBase {}
 
@@ -128,7 +129,8 @@ ClassicEditor.builtinPlugins = [
 	ExtendParagraphSchemaPlugin,
 	InsertBannerPlugin,
 	InsertFooterPlugin,
-	TableWidthPlugin
+	TableWidthPlugin,
+	TableAlignPlugin
 ];
 
 // Editor configuration.
