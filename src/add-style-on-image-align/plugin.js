@@ -5,7 +5,7 @@
 
 import { Plugin } from 'ckeditor5/src/core';
 import { convertModelAttributeToViewStyle, convertViewStyleToModelAttribute } from './converter';
-import { normalizeImageStyles } from "@ckeditor/ckeditor5-image/src/imagestyle/utils";
+import normalizeStyles from "@ckeditor/ckeditor5-image/src/imagestyle/utils";
 
 export default class AddStyleOnImageAlignPlugin extends Plugin {
     static get pluginName() {
@@ -25,7 +25,7 @@ export default class AddStyleOnImageAlignPlugin extends Plugin {
 
         // convert html element style to model attribute
         const data = editor.data;
-        const styles = normalizeImageStyles(editor.config.get('image.styles'));
+        const styles = normalizeStyles(config);
         data.upcastDispatcher.on(
             'element:p',
             convertViewStyleToModelAttribute(styles),

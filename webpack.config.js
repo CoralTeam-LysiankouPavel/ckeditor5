@@ -12,6 +12,7 @@ const webpack = require( 'webpack' );
 const { bundler, styles } = require( '@ckeditor/ckeditor5-dev-utils' );
 const CKEditorWebpackPlugin = require( '@ckeditor/ckeditor5-dev-webpack-plugin' );
 const TerserPlugin = require( 'terser-webpack-plugin' );
+const MiniCssExtractPlugin = require( 'mini-css-extract-plugin' );
 
 module.exports = {
 	devtool: 'source-map',
@@ -32,7 +33,6 @@ module.exports = {
 	optimization: {
 		minimizer: [
 			new TerserPlugin( {
-				sourceMap: true,
 				terserOptions: {
 					output: {
 						// Preserve CKEditor 5 license comments.
@@ -51,10 +51,10 @@ module.exports = {
 			language: 'en',
 			additionalLanguages: 'all'
 		} ),
-		new webpack.BannerPlugin( {
-			banner: bundler.getLicenseBanner(),
-			raw: true
-		} )
+		// new webpack.BannerPlugin( {
+		// 	banner: bundler.getLicenseBanner(),
+		// 	raw: true
+		// } )
 	],
 
 	module: {
@@ -75,14 +75,17 @@ module.exports = {
 							}
 						}
 					},
+					'css-loader',
 					{
 						loader: 'postcss-loader',
-						options: styles.getPostCssConfig( {
-							themeImporter: {
-								themePath: require.resolve( '@ckeditor/ckeditor5-theme-lark' )
-							},
-							minify: true
-						} )
+						options: {
+							postcssOptions: styles.getPostCssConfig( {
+								themeImporter: {
+									themePath: require.resolve( '@ckeditor/ckeditor5-theme-lark' )
+								},
+								minify: true
+							} )
+						}
 					}
 				]
 			}
