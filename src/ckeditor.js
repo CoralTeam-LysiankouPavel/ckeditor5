@@ -23,8 +23,18 @@ import ImageResize from '@ckeditor/ckeditor5-image/src/imageresize';
 import ImageStyle from '@ckeditor/ckeditor5-image/src/imagestyle';
 import ImageToolbar from '@ckeditor/ckeditor5-image/src/imagetoolbar';
 import ImageUpload from '@ckeditor/ckeditor5-image/src/imageupload';
+import LinkImage from '@ckeditor/ckeditor5-link/src/linkimage';
 import Indent from '@ckeditor/ckeditor5-indent/src/indent';
-import { Bold, Italic, Code } from '@ckeditor/ckeditor5-basic-styles/src/index';
+import {
+	Bold,
+	Code,
+	Italic,
+	Strikethrough,
+	Subscript,
+	Superscript,
+	Underline
+} from '@ckeditor/ckeditor5-basic-styles/src/index';
+import IndentBlock from '@ckeditor/ckeditor5-indent/src/indentblock';
 import Link from '@ckeditor/ckeditor5-link/src/link';
 import List from '@ckeditor/ckeditor5-list/src/list';
 import ListProperties from '@ckeditor/ckeditor5-list/src/listproperties';
@@ -41,26 +51,27 @@ import SpecialCharactersEssentials from '@ckeditor/ckeditor5-special-characters/
 import SpecialCharactersLatin from '@ckeditor/ckeditor5-special-characters/src/specialcharacterslatin';
 import SpecialCharactersMathematical from '@ckeditor/ckeditor5-special-characters/src/specialcharactersmathematical';
 import SpecialCharactersText from '@ckeditor/ckeditor5-special-characters/src/specialcharacterstext';
-import Strikethrough from '@ckeditor/ckeditor5-basic-styles/src/strikethrough';
-import Subscript from '@ckeditor/ckeditor5-basic-styles/src/subscript';
-import Superscript from '@ckeditor/ckeditor5-basic-styles/src/superscript'
 import Table from '@ckeditor/ckeditor5-table/src/table';
 import TableToolbar from '@ckeditor/ckeditor5-table/src/tabletoolbar';
 import TableColumnResize from '@ckeditor/ckeditor5-table/src/tablecolumnresize';
 import TableProperties from '@ckeditor/ckeditor5-table/src/tableproperties';
 import TableCellProperties from '@ckeditor/ckeditor5-table/src/tablecellproperties';
 import TextTransformation from '@ckeditor/ckeditor5-typing/src/texttransformation';
-import Underline from '@ckeditor/ckeditor5-basic-styles/src/underline';
 import UploadAdapter from '@ckeditor/ckeditor5-adapter-ckfinder/src/uploadadapter';
 
 
 // custom plugins
 import ImageDataDowncastPlugin from "./image-data-downcast/plugin";
+import AddPuddingToTableCellPlugin from "./add-padding-to-table-cell/plugin";
 import AddStyleOnImageAlignPlugin from './add-style-on-image-align/plugin';
 import AddStyleOnImageInsertPlugin from './add-style-on-image-insert/plugin';
 import AddStyleOnImageResizedPlugin from "./add-style-on-image-resized/plugin";
+import AddStyleOnTableInsertPlugin from  "./add-style-on-table-insert/plugin";
+import ExtendParagraphSchemaPlugin from "./extend-paragraph-schema/plugin";
 import InsertBannerPlugin from "./insert-banner/plugin";
 import InsertFooterPlugin from "./insert-footer/plugin";
+import TableWidthPlugin from "./table-width/plugin";
+import TableAlignPlugin from "./table-align/plugin";
 
 export default class ClassicEditor extends ClassicEditorBase {}
 
@@ -85,7 +96,9 @@ ClassicEditor.builtinPlugins = [
 	ImageStyle,
 	ImageToolbar,
 	ImageUpload,
+	LinkImage,
 	Indent,
+	IndentBlock,
 	Italic,
 	Link,
 	List,
@@ -118,11 +131,16 @@ ClassicEditor.builtinPlugins = [
 
 	// custom plugins
 	ImageDataDowncastPlugin,
-	// AddStyleOnImageAlignPlugin,
+	AddPuddingToTableCellPlugin,
+	AddStyleOnImageAlignPlugin,
 	AddStyleOnImageInsertPlugin,
 	AddStyleOnImageResizedPlugin,
+	AddStyleOnTableInsertPlugin,
+	ExtendParagraphSchemaPlugin,
 	InsertBannerPlugin,
-	InsertFooterPlugin
+	InsertFooterPlugin,
+	TableWidthPlugin,
+	TableAlignPlugin
 ];
 
 // Editor configuration.
@@ -144,6 +162,8 @@ ClassicEditor.defaultConfig = {
 			'outdent', 'indent',
 			'|',
 			'imageStyle:alignLeft', 'imageStyle:alignCenter', 'imageStyle:alignRight',
+			'|',
+			'linkImage',
 			'|',
 			'resizeImage',
 			'|',
@@ -191,6 +211,136 @@ ClassicEditor.defaultConfig = {
 		],
 		supportAllValues: true
 	},
+	fontColor: {
+		colors: [
+			{
+				color: '#000000',
+				label: 'Black'
+			},
+			{
+				color: '#4D4D4D',
+				label: 'Dim grey'
+			},
+			{
+				color: '#999999',
+				label: 'Grey'
+			},
+			{
+				color: '#E6E6E6',
+				label: 'Light grey'
+			},
+			{
+				color: '#FFFFFF',
+				label: 'White'
+			},
+			{
+				color: '#E64C4C',
+				label: 'Red'
+			},
+			{
+				color: '#E6994C',
+				label: 'Orange'
+			},
+			{
+				color: '#E6E64C',
+				label: 'Yellow'
+			},
+			{
+				color: '#99E64C',
+				label: 'Light green'
+			},
+			{
+				color: '#4CE64C',
+				label: 'Green'
+			},
+			{
+				color: '#4CE699',
+				label: 'Aquamarine'
+			},
+			{
+				color: '#4CE6E6',
+				label: 'Turquoise'
+			},
+			{
+				color: '#4C99E6',
+				label: 'Light blue'
+			},
+			{
+				color: '#4C4CE6',
+				label: 'Blue'
+			},
+			{
+				color: '#994CE6',
+				label: 'Purple'
+			}
+		],
+		documentColors: 0
+	},
+	fontBackgroundColor: {
+		colors: [
+			{
+				color: '#000000',
+				label: 'Black'
+			},
+			{
+				color: '#4D4D4D',
+				label: 'Dim grey'
+			},
+			{
+				color: '#999999',
+				label: 'Grey'
+			},
+			{
+				color: '#E6E6E6',
+				label: 'Light grey'
+			},
+			{
+				color: '#FFFFFF',
+				label: 'White'
+			},
+			{
+				color: '#E64C4C',
+				label: 'Red'
+			},
+			{
+				color: '#E6994C',
+				label: 'Orange'
+			},
+			{
+				color: '#E6E64C',
+				label: 'Yellow'
+			},
+			{
+				color: '#99E64C',
+				label: 'Light green'
+			},
+			{
+				color: '#4CE64C',
+				label: 'Green'
+			},
+			{
+				color: '#4CE699',
+				label: 'Aquamarine'
+			},
+			{
+				color: '#4CE6E6',
+				label: 'Turquoise'
+			},
+			{
+				color: '#4C99E6',
+				label: 'Light blue'
+			},
+			{
+				color: '#4C4CE6',
+				label: 'Blue'
+			},
+			{
+				color: '#994CE6',
+				label: 'Purple'
+			}
+		],
+		documentColors: 0
+	},
 	image: {
 		toolbar: [
 			'imageStyle:alignLeft',
@@ -198,48 +348,23 @@ ClassicEditor.defaultConfig = {
 			'imageStyle:alignRight',
 			'|',
 			'imageTextAlternative',
-			// '|',
-			// 'resizeImage:25',
-			// 'resizeImage:50',
-            // 'resizeImage:75',
-            // 'resizeImage:original'
 		],
-		styles: [
-			// This option is equal to a situation where no style is applied.
-			'full',
+		styles: {
+			options: [
+				'inline',
+				// This option is equal to a situation where no style is applied.
+				'block',
+				'side',
 
-			// This represents an image aligned to the left.
-			'alignLeft',
+				// This represents an image aligned to the left.
+				'alignLeft',
 
-			// This represents an image aligned to the right.
-			'alignRight',
+				// This represents an image aligned to the right.
+				'alignRight',
 
-			'side',
-
-			'alignCenter'
-		],
-		// resizeOptions: [
-        //     {
-        //         name: 'resizeImage:original',
-        //         value: null,
-        //         icon: 'original'
-        //     },
-        //     {
-        //         name: 'resizeImage:25',
-        //         value: '25',
-        //         icon: 'small'
-        //     },
-        //     {
-        //         name: 'resizeImage:50',
-        //         value: '50',
-        //         icon: 'medium'
-        //     },
-        //     {
-        //         name: 'resizeImage:75',
-        //         value: '75',
-        //         icon: 'large'
-        //     }
-        // ],
+				'alignCenter'
+			]
+		},
 	},
 	table: {
 		contentToolbar: [
@@ -261,10 +386,17 @@ ClassicEditor.defaultConfig = {
           	},
         }
     },
+	indentBlock: {
+		offset: 0.5,
+		unit: 'in'
+	},
 	language: 'en',
 	app: {
 		banners: [],
-		footers: []
+		footers: [],
+		containerWidth: 1000,
+		tableCellPadding: '15px',
+		tableCellBorder: '1px solid #bfbfbf;',
 	}
 };
 
