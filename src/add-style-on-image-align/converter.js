@@ -52,7 +52,10 @@ export function convertModelAttributeToViewStyle(evt, data, conversionApi) {
  */
 export function convertViewStyleToModelAttribute(styles) {
     // Convert only non–default styles.
-    const filteredStyles = styles.filter(style => !style.isDefault);
+    const nonDefaultStyles = {
+        imageInline: styles.filter( style => !style.isDefault && style.modelElements.includes( 'imageInline' ) ),
+        imageBlock: styles.filter( style => !style.isDefault && style.modelElements.includes( 'imageBlock' ) )
+    };
 
     return (evt, data, conversionApi) => {
         if (!data.modelRange) {

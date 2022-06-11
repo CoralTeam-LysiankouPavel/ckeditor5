@@ -9,10 +9,8 @@ import ClassicEditorBase from '@ckeditor/ckeditor5-editor-classic/src/classicedi
 import Alignment from '@ckeditor/ckeditor5-alignment/src/alignment';
 import Autoformat from '@ckeditor/ckeditor5-autoformat/src/autoformat';
 import BlockQuote from '@ckeditor/ckeditor5-block-quote/src/blockquote';
-import Bold from '@ckeditor/ckeditor5-basic-styles/src/bold';
 import CKFinder from '@ckeditor/ckeditor5-ckfinder/src/ckfinder';
 import CloudServices from '@ckeditor/ckeditor5-cloud-services/src/cloudservices';
-import Code from '@ckeditor/ckeditor5-basic-styles/src/code';
 import CodeBlock from '@ckeditor/ckeditor5-code-block/src/codeblock';
 import EasyImage from '@ckeditor/ckeditor5-easy-image/src/easyimage';
 import Essentials from '@ckeditor/ckeditor5-essentials/src/essentials';
@@ -25,12 +23,21 @@ import ImageResize from '@ckeditor/ckeditor5-image/src/imageresize';
 import ImageStyle from '@ckeditor/ckeditor5-image/src/imagestyle';
 import ImageToolbar from '@ckeditor/ckeditor5-image/src/imagetoolbar';
 import ImageUpload from '@ckeditor/ckeditor5-image/src/imageupload';
+import LinkImage from '@ckeditor/ckeditor5-link/src/linkimage';
 import Indent from '@ckeditor/ckeditor5-indent/src/indent';
+import {
+	Bold,
+	Code,
+	Italic,
+	Strikethrough,
+	Subscript,
+	Superscript,
+	Underline
+} from '@ckeditor/ckeditor5-basic-styles/src/index';
 import IndentBlock from '@ckeditor/ckeditor5-indent/src/indentblock';
-import Italic from '@ckeditor/ckeditor5-basic-styles/src/italic';
 import Link from '@ckeditor/ckeditor5-link/src/link';
 import List from '@ckeditor/ckeditor5-list/src/list';
-import ListStyle from '@ckeditor/ckeditor5-list/src/liststyle';
+import ListProperties from '@ckeditor/ckeditor5-list/src/listproperties';
 import MediaEmbed from '@ckeditor/ckeditor5-media-embed/src/mediaembed';
 import Paragraph from '@ckeditor/ckeditor5-paragraph/src/paragraph';
 import PasteFromOffice from '@ckeditor/ckeditor5-paste-from-office/src/pastefromoffice';
@@ -44,13 +51,12 @@ import SpecialCharactersEssentials from '@ckeditor/ckeditor5-special-characters/
 import SpecialCharactersLatin from '@ckeditor/ckeditor5-special-characters/src/specialcharacterslatin';
 import SpecialCharactersMathematical from '@ckeditor/ckeditor5-special-characters/src/specialcharactersmathematical';
 import SpecialCharactersText from '@ckeditor/ckeditor5-special-characters/src/specialcharacterstext';
-import Strikethrough from '@ckeditor/ckeditor5-basic-styles/src/strikethrough';
-import Subscript from '@ckeditor/ckeditor5-basic-styles/src/subscript';
-import Superscript from '@ckeditor/ckeditor5-basic-styles/src/superscript'
 import Table from '@ckeditor/ckeditor5-table/src/table';
 import TableToolbar from '@ckeditor/ckeditor5-table/src/tabletoolbar';
+import TableColumnResize from '@ckeditor/ckeditor5-table/src/tablecolumnresize';
+import TableProperties from '@ckeditor/ckeditor5-table/src/tableproperties';
+import TableCellProperties from '@ckeditor/ckeditor5-table/src/tablecellproperties';
 import TextTransformation from '@ckeditor/ckeditor5-typing/src/texttransformation';
-import Underline from '@ckeditor/ckeditor5-basic-styles/src/underline';
 import UploadAdapter from '@ckeditor/ckeditor5-adapter-ckfinder/src/uploadadapter';
 
 
@@ -90,12 +96,13 @@ ClassicEditor.builtinPlugins = [
 	ImageStyle,
 	ImageToolbar,
 	ImageUpload,
+	LinkImage,
 	Indent,
 	IndentBlock,
 	Italic,
 	Link,
 	List,
-	ListStyle,
+	ListProperties,
 	MediaEmbed,
 	Paragraph,
 	PasteFromOffice,
@@ -115,6 +122,9 @@ ClassicEditor.builtinPlugins = [
 	Superscript,
 	Table,
 	TableToolbar,
+	TableColumnResize,
+	TableProperties,
+	TableCellProperties,
 	TextTransformation,
 	Underline,
 	UploadAdapter,
@@ -153,6 +163,8 @@ ClassicEditor.defaultConfig = {
 			'|',
 			'imageStyle:alignLeft', 'imageStyle:alignCenter', 'imageStyle:alignRight',
 			'|',
+			'linkImage',
+			'|',
 			'resizeImage',
 			'|',
 			'imageTextAlternative',
@@ -163,7 +175,6 @@ ClassicEditor.defaultConfig = {
 			'|',
 			'horizontalLine',
 			'|',
-			// 'pageBreak'
 			'removeFormat',
 			'|',
 			'selectAll',
@@ -337,62 +348,39 @@ ClassicEditor.defaultConfig = {
 			'imageStyle:alignRight',
 			'|',
 			'imageTextAlternative',
-			// '|',
-			// 'resizeImage:25',
-			// 'resizeImage:50',
-            // 'resizeImage:75',
-            // 'resizeImage:original'
 		],
-		styles: [
-			// This option is equal to a situation where no style is applied.
-			'full',
+		styles: {
+			options: [
+				'inline',
+				// This option is equal to a situation where no style is applied.
+				'block',
+				'side',
 
-			// This represents an image aligned to the left.
-			'alignLeft',
+				// This represents an image aligned to the left.
+				'alignLeft',
 
-			// This represents an image aligned to the right.
-			'alignRight',
+				// This represents an image aligned to the right.
+				'alignRight',
 
-			'side',
-
-			'alignCenter'
-		],
-		// resizeOptions: [
-        //     {
-        //         name: 'resizeImage:original',
-        //         value: null,
-        //         icon: 'original'
-        //     },
-        //     {
-        //         name: 'resizeImage:25',
-        //         value: '25',
-        //         icon: 'small'
-        //     },
-        //     {
-        //         name: 'resizeImage:50',
-        //         value: '50',
-        //         icon: 'medium'
-        //     },
-        //     {
-        //         name: 'resizeImage:75',
-        //         value: '75',
-        //         icon: 'large'
-        //     }
-        // ],
+				'alignCenter'
+			]
+		},
 	},
 	table: {
 		contentToolbar: [
 			'tableColumn',
 			'tableRow',
-			'mergeTableCells'
+			'mergeTableCells',
+			'tableProperties',
+			'tableCellProperties',
 		]
 	},
 	link: {
         decorators: {
             isExternal: {
-					mode: 'automatic',
-					callback: url => url.startsWith('http'),
-					attributes: {
+				mode: 'automatic',
+				callback: url => url.startsWith('http'),
+				attributes: {
 					target: '_blank'
 				}
           	},
