@@ -6,15 +6,15 @@
  *   ------------------------------------------------------------------------------------------------------------
  *   |   Option description               |   Config path                                                       |
  *   ------------------------------------------------------------------------------------------------------------
- *   |   to enable plugin                 |   editor.config.app.containerPlugin.enabled = bool value;           |
+ *   |   to enable plugin                 |   editor.config.app.CKEditorContentWrapper.enabled = bool value;           |
  *   ------------------------------------------------------------------------------------------------------------
- *   |   to set container width           |   editor.config.app.containerPlugin.containerWidth = string value   |
+ *   |   to set container width           |   editor.config.app.CKEditorContentWrapper.containerWidth = string value   |
  *   ------------------------------------------------------------------------------------------------------------
- *   |   to set container border width    |   editor.config.app.containerPlugin.borderWidth = int value         |
+ *   |   to set container border width    |   editor.config.app.CKEditorContentWrapper.borderWidth = int value         |
  *   ------------------------------------------------------------------------------------------------------------
- *   |   to set container border style    |   editor.config.app.containerPlugin.borderStyle = string value      |
+ *   |   to set container border style    |   editor.config.app.CKEditorContentWrapper.borderStyle = string value      |
  *   ------------------------------------------------------------------------------------------------------------
- *   |   to set container border color    |   editor.config.app.containerPlugin.borderColor = hex value         |
+ *   |   to set container border color    |   editor.config.app.CKEditorContentWrapper.borderColor = hex value         |
  *   ------------------------------------------------------------------------------------------------------------
  */
 
@@ -62,22 +62,22 @@ export default class CKEditorContentWrapperPlugin extends Plugin {
     }
 
     static #pluginEnabled(editorConfig) {
-        return editorConfig.get('app.containerPlugin.enabled');
+        return editorConfig.get('app.CKEditorContentWrapper.enabled');
     }
 
     static #getContainerWidth(editorConfig) {
-        return editorConfig.get('app.containerPlugin.containerWidth');
+        return editorConfig.get('app.CKEditorContentWrapper.containerWidth');
     }
 
     static #getBorderWidth(editorConfig) {
-        return editorConfig.get('app.containerPlugin.borderWidth');
+        return editorConfig.get('app.CKEditorContentWrapper.borderWidth');
     }
 
     static #getBorderStyle(editorConfig) {
-        return editorConfig.get('app.containerPlugin.borderStyle');
+        return editorConfig.get('app.CKEditorContentWrapper.borderStyle');
     }
 
     static #getBorderColor(editorConfig) {
-        return editorConfig.get('app.containerPlugin.borderColor');
+        return editorConfig.get('app.CKEditorContentWrapper.borderColor');
     }
 }
