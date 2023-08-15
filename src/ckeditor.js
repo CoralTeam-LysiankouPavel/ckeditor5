@@ -64,8 +64,8 @@ import UploadAdapter from '@ckeditor/ckeditor5-adapter-ckfinder/src/uploadadapte
 // import ExtendParagraphSchemaPlugin from "./extend-paragraph-schema/plugin";
 import InsertBannerPlugin from "./insert-banner/plugin";
 import InsertFooterPlugin from "./insert-footer/plugin";
-// import TableWidthPlugin from "./table-width/plugin";
-// import TableAlignPlugin from "./table-align/plugin";
+import TableWidthPlugin from "./table-width/plugin";
+import TableAlignPlugin from "./table-align/plugin";
 
 export default class ClassicEditor extends ClassicEditorBase {}
 
@@ -129,8 +129,8 @@ ClassicEditor.builtinPlugins = [
 	// ExtendParagraphSchemaPlugin,
 	InsertBannerPlugin,
 	InsertFooterPlugin,
-	// TableWidthPlugin,
-	// TableAlignPlugin
+	TableWidthPlugin,
+	TableAlignPlugin
 ];
 
 // Editor configuration.
