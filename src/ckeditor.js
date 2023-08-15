@@ -62,8 +62,8 @@ import UploadAdapter from '@ckeditor/ckeditor5-adapter-ckfinder/src/uploadadapte
 // import AddStyleOnImageResizedPlugin from "./add-style-on-image-resized/plugin";
 // import AddStyleOnTableInsertPlugin from  "./add-style-on-table-insert/plugin";
 // import ExtendParagraphSchemaPlugin from "./extend-paragraph-schema/plugin";
-// import InsertBannerPlugin from "./insert-banner/plugin";
-// import InsertFooterPlugin from "./insert-footer/plugin";
+import InsertBannerPlugin from "./insert-banner/plugin";
+import InsertFooterPlugin from "./insert-footer/plugin";
 // import TableWidthPlugin from "./table-width/plugin";
 // import TableAlignPlugin from "./table-align/plugin";
 
@@ -127,8 +127,8 @@ ClassicEditor.builtinPlugins = [
 	// AddStyleOnImageResizedPlugin,
 	// AddStyleOnTableInsertPlugin,
 	// ExtendParagraphSchemaPlugin,
-	// InsertBannerPlugin,
-	// InsertFooterPlugin,
+	InsertBannerPlugin,
+	InsertFooterPlugin,
 	// TableWidthPlugin,
 	// TableAlignPlugin
 ];
