@@ -67,8 +67,8 @@
     "webpack-cli": "^5.1.4"
   },
   "engines": {
-    "node": "v20.3.0",
-    "npm": "9.6.7"
+    "node": "v18.16.0",
+    "npm": "9.5.1"
   },
   "author": "CKSource (http://cksource.com/)",
   "license": "GPL-2.0-or-later",
