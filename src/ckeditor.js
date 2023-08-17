@@ -56,12 +56,12 @@ import UploadAdapter from '@ckeditor/ckeditor5-adapter-ckfinder/src/uploadadapte
 
 // custom plugins
 // import ImageDataDowncastPlugin from "./image-data-downcast/plugin";
-// import AddPuddingToTableCellPlugin from "./add-padding-to-table-cell/plugin";
 // import AddStyleOnImageAlignPlugin from './add-style-on-image-align/plugin';
 // import AddStyleOnImageInsertPlugin from './add-style-on-image-insert/plugin';
 // import AddStyleOnImageResizedPlugin from "./add-style-on-image-resized/plugin";
-// import AddStyleOnTableInsertPlugin from  "./add-style-on-table-insert/plugin";
-// import ExtendParagraphSchemaPlugin from "./extend-paragraph-schema/plugin";
+import AddStyleOnTableInsertPlugin from  "./add-style-on-table-insert/plugin";
+import AddPuddingToTableCellPlugin from "./add-padding-to-table-cell/plugin";
+import ExtendParagraphSchemaPlugin from "./extend-paragraph-schema/plugin";
 import InsertBannerPlugin from "./insert-banner/plugin";
 import InsertFooterPlugin from "./insert-footer/plugin";
 import TableWidthPlugin from "./table-width/plugin";
@@ -121,12 +121,12 @@ ClassicEditor.builtinPlugins = [
 
 	// custom plugins
 	// ImageDataDowncastPlugin,
-	// AddPuddingToTableCellPlugin,
 	// AddStyleOnImageAlignPlugin,
 	// AddStyleOnImageInsertPlugin,
 	// AddStyleOnImageResizedPlugin,
-	// AddStyleOnTableInsertPlugin,
-	// ExtendParagraphSchemaPlugin,
+	AddPuddingToTableCellPlugin,
+	AddStyleOnTableInsertPlugin,
+	ExtendParagraphSchemaPlugin,
 	InsertBannerPlugin,
 	InsertFooterPlugin,
 	TableWidthPlugin,
