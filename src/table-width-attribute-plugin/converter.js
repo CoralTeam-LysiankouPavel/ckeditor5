@@ -1,6 +1,6 @@
 import { ATTRIBUTE_WIDTH } from "./plugin";
 
-export function modelAttributeToViewStyle(evt, data, conversionApi) {
+export function __modelAttributeToViewStyle(evt, data, conversionApi) {
     // <figure>...</figure>
     const figureViewElement = conversionApi.mapper.toViewElement(data.item);
     const viewWriter = conversionApi.writer;
@@ -19,7 +19,7 @@ export function modelAttributeToViewStyle(evt, data, conversionApi) {
     }
 }
 
-export function viewStyleToModelAttribute(evt, data, conversionApi) {
+export function __viewStyleToModelAttribute(evt, data, conversionApi) {
     const width = data.viewItem.getAttribute(ATTRIBUTE_WIDTH);
 
     if (width === undefined) {
