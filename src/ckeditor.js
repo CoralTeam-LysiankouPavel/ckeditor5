@@ -61,13 +61,14 @@ import UploadAdapter from '@ckeditor/ckeditor5-adapter-ckfinder/src/uploadadapte
 // import AddStyleOnImageAlignPlugin from './add-style-on-image-align/plugin';
 // import AddStyleOnImageInsertPlugin from './add-style-on-image-insert/plugin';
 // import AddStyleOnImageResizedPlugin from "./add-style-on-image-resized/plugin";
-import AddStyleOnTableInsertPlugin from  "./add-style-on-table-insert/plugin";
-import AddPuddingToTableCellPlugin from "./add-padding-to-table-cell/plugin";
 import ExtendParagraphSchemaPlugin from "./extend-paragraph-schema/plugin";
 import InsertBannerPlugin from "./insert-banner/plugin";
 import InsertFooterPlugin from "./insert-footer/plugin";
+
+import AddStyleOnTableInsertPlugin from  "./add-style-on-table-insert/plugin";
+import AddPuddingToTableCellPlugin from "./add-padding-to-table-cell/plugin";
 import TableWidthPlugin from "./table-width/plugin";
-import TableAlignPlugin from "./table-align/plugin";
+import TableAlignAttributePlugin from "./table-align-attribute-plugin/plugin";
 
 export default class ClassicEditor extends ClassicEditorBase {}
 
@@ -128,13 +129,15 @@ ClassicEditor.builtinPlugins = [
 	// AddStyleOnImageAlignPlugin,
 	// AddStyleOnImageInsertPlugin,
 	// AddStyleOnImageResizedPlugin,
-	AddPuddingToTableCellPlugin,
-	AddStyleOnTableInsertPlugin,
 	ExtendParagraphSchemaPlugin,
 	InsertBannerPlugin,
 	InsertFooterPlugin,
-	TableWidthPlugin,
-	TableAlignPlugin
+
+	TableAlignAttributePlugin,
+	// AddPuddingToTableCellPlugin,
+	// AddStyleOnTableInsertPlugin,
+	// TableWidthPlugin,
+	// TableAlignPlugin
 ];
 
 // Editor configuration.
