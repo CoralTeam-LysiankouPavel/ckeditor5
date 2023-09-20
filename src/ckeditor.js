@@ -70,6 +70,7 @@ import AddPuddingToTableCellPlugin from "./add-padding-to-table-cell/plugin";
 import TableWidthAttributePlugin from "./table-width-attribute-plugin/plugin";
 import TableAlignAttributePlugin from "./table-align-attribute-plugin/plugin";
 import TableHeightAttributePlugin from "./table-height-attribute-plugin/plugin";
+import TableBorderAttributePlugin from "./table-border-attribute-plugin/plugin";
 
 export default class ClassicEditor extends ClassicEditorBase {}
 
@@ -137,6 +138,7 @@ ClassicEditor.builtinPlugins = [
 	TableAlignAttributePlugin,
 	TableWidthAttributePlugin,
 	TableHeightAttributePlugin,
+	TableBorderAttributePlugin,
 	// AddPuddingToTableCellPlugin,
 	// AddStyleOnTableInsertPlugin,
 	// TableAlignPlugin
