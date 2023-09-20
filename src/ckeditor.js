@@ -49,6 +49,8 @@ import Subscript from '@ckeditor/ckeditor5-basic-styles/src/subscript';
 import Superscript from '@ckeditor/ckeditor5-basic-styles/src/superscript'
 import Table from '@ckeditor/ckeditor5-table/src/table';
 import TableToolbar from '@ckeditor/ckeditor5-table/src/tabletoolbar';
+import TableProperties from '@ckeditor/ckeditor5-table/src/tableproperties'
+import TableCellProperties from '@ckeditor/ckeditor5-table/src/tablecellproperties'
 import TextTransformation from '@ckeditor/ckeditor5-typing/src/texttransformation';
 import Underline from '@ckeditor/ckeditor5-basic-styles/src/underline';
 import UploadAdapter from '@ckeditor/ckeditor5-adapter-ckfinder/src/uploadadapter';
@@ -115,6 +117,8 @@ ClassicEditor.builtinPlugins = [
 	Superscript,
 	Table,
 	TableToolbar,
+	TableProperties,
+	TableCellProperties,
 	TextTransformation,
 	Underline,
 	UploadAdapter,
@@ -157,7 +161,9 @@ ClassicEditor.defaultConfig = {
 			'|',
 			'imageTextAlternative',
 			'|',
-			'uploadImage', 'blockQuote', 'insertTable', 'mediaEmbed', 'undo', 'redo',
+			'uploadImage', 'blockQuote', 'mediaEmbed', 'undo', 'redo',
+			'|',
+			'insertTable', 'tableProperties', 'tableColumn', 'tableRow', 'mergeTableCells', 'tableCellProperties',
 			'|',
 			'codeBlock',
 			'|',
@@ -382,9 +388,11 @@ ClassicEditor.defaultConfig = {
 	},
 	table: {
 		contentToolbar: [
+			'tableProperties',
 			'tableColumn',
 			'tableRow',
-			'mergeTableCells'
+			'mergeTableCells',
+			'tableCellProperties'
 		]
 	},
 	link: {
