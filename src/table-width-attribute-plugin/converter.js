@@ -1,6 +1,6 @@
 import { ATTRIBUTE_WIDTH } from "./plugin";
 
-export function modelAttributeToViewStyle(evt, data, conversionApi) {
+export function __modelAttributeToViewStyle(evt, data, conversionApi) {
     // <figure>...</figure>
     const figureViewElement = conversionApi.mapper.toViewElement(data.item);
     const viewWriter = conversionApi.writer;
@@ -8,7 +8,12 @@ export function modelAttributeToViewStyle(evt, data, conversionApi) {
     for (const childViewElement of figureViewElement.getChildren()) {
         if (childViewElement.name === 'table') {
             if (data.attributeNewValue !== null) {
-                const width = data.attributeNewValue;
+                let width = data.attributeNewValue;
+
+                if (width.endsWith('px')) {
+                    width = width.replace('px', '');
+                }
+
                 viewWriter.setAttribute(ATTRIBUTE_WIDTH, width, childViewElement);
                 viewWriter.setStyle(ATTRIBUTE_WIDTH, width + 'px', childViewElement);
             } else {
@@ -19,7 +24,7 @@ export function modelAttributeToViewStyle(evt, data, conversionApi) {
     }
 }
 
-export function viewStyleToModelAttribute(evt, data, conversionApi) {
+export function __viewStyleToModelAttribute(evt, data, conversionApi) {
     const width = data.viewItem.getAttribute(ATTRIBUTE_WIDTH);
 
     if (width === undefined) {

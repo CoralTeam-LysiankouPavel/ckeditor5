@@ -49,23 +49,28 @@ import Subscript from '@ckeditor/ckeditor5-basic-styles/src/subscript';
 import Superscript from '@ckeditor/ckeditor5-basic-styles/src/superscript'
 import Table from '@ckeditor/ckeditor5-table/src/table';
 import TableToolbar from '@ckeditor/ckeditor5-table/src/tabletoolbar';
+import TableProperties from '@ckeditor/ckeditor5-table/src/tableproperties'
+import TableCellProperties from '@ckeditor/ckeditor5-table/src/tablecellproperties'
 import TextTransformation from '@ckeditor/ckeditor5-typing/src/texttransformation';
 import Underline from '@ckeditor/ckeditor5-basic-styles/src/underline';
 import UploadAdapter from '@ckeditor/ckeditor5-adapter-ckfinder/src/uploadadapter';
 
 
 // custom plugins
-import ImageDataDowncastPlugin from "./image-data-downcast/plugin";
-import AddPuddingToTableCellPlugin from "./add-padding-to-table-cell/plugin";
-import AddStyleOnImageAlignPlugin from './add-style-on-image-align/plugin';
-import AddStyleOnImageInsertPlugin from './add-style-on-image-insert/plugin';
-import AddStyleOnImageResizedPlugin from "./add-style-on-image-resized/plugin";
-import AddStyleOnTableInsertPlugin from  "./add-style-on-table-insert/plugin";
+// import ImageDataDowncastPlugin from "./image-data-downcast/plugin";
+// import AddStyleOnImageAlignPlugin from './add-style-on-image-align/plugin';
+// import AddStyleOnImageInsertPlugin from './add-style-on-image-insert/plugin';
+// import AddStyleOnImageResizedPlugin from "./add-style-on-image-resized/plugin";
 import ExtendParagraphSchemaPlugin from "./extend-paragraph-schema/plugin";
 import InsertBannerPlugin from "./insert-banner/plugin";
 import InsertFooterPlugin from "./insert-footer/plugin";
-import TableWidthPlugin from "./table-width/plugin";
-import TableAlignPlugin from "./table-align/plugin";
+
+import AddStyleOnTableInsertPlugin from  "./add-style-on-table-insert/plugin";
+import AddPuddingToTableCellPlugin from "./add-padding-to-table-cell/plugin";
+import TableWidthAttributePlugin from "./table-width-attribute-plugin/plugin";
+import TableAlignAttributePlugin from "./table-align-attribute-plugin/plugin";
+import TableHeightAttributePlugin from "./table-height-attribute-plugin/plugin";
+import TableBorderAttributePlugin from "./table-border-attribute-plugin/plugin";
 
 export default class ClassicEditor extends ClassicEditorBase {}
 
@@ -115,22 +120,29 @@ ClassicEditor.builtinPlugins = [
 	Superscript,
 	Table,
 	TableToolbar,
+	TableProperties,
+	TableCellProperties,
 	TextTransformation,
 	Underline,
 	UploadAdapter,
 
 	// custom plugins
-	ImageDataDowncastPlugin,
-	AddPuddingToTableCellPlugin,
-	AddStyleOnImageAlignPlugin,
-	AddStyleOnImageInsertPlugin,
-	AddStyleOnImageResizedPlugin,
-	AddStyleOnTableInsertPlugin,
+	// ImageDataDowncastPlugin,
+	// AddStyleOnImageAlignPlugin,
+	// AddStyleOnImageInsertPlugin,
+	// AddStyleOnImageResizedPlugin,
 	ExtendParagraphSchemaPlugin,
 	InsertBannerPlugin,
 	InsertFooterPlugin,
-	TableWidthPlugin,
-	TableAlignPlugin
+
+	TableWidthAttributePlugin,
+	TableHeightAttributePlugin,
+	TableAlignAttributePlugin,
+	TableBorderAttributePlugin,
+
+	// AddPuddingToTableCellPlugin,
+	// AddStyleOnTableInsertPlugin,
+	// TableAlignPlugin
 ];
 
 // Editor configuration.
@@ -157,7 +169,9 @@ ClassicEditor.defaultConfig = {
 			'|',
 			'imageTextAlternative',
 			'|',
-			'uploadImage', 'blockQuote', 'insertTable', 'mediaEmbed', 'undo', 'redo',
+			'uploadImage', 'blockQuote', 'mediaEmbed', 'undo', 'redo',
+			'|',
+			'insertTable', 'tableProperties', 'tableColumn', 'tableRow', 'mergeTableCells', 'tableCellProperties',
 			'|',
 			'codeBlock',
 			'|',
@@ -382,9 +396,11 @@ ClassicEditor.defaultConfig = {
 	},
 	table: {
 		contentToolbar: [
+			'tableProperties',
 			'tableColumn',
 			'tableRow',
-			'mergeTableCells'
+			'mergeTableCells',
+			'tableCellProperties'
 		]
 	},
 	link: {
