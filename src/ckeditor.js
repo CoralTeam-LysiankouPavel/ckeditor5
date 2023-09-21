@@ -135,10 +135,11 @@ ClassicEditor.builtinPlugins = [
 	InsertBannerPlugin,
 	InsertFooterPlugin,
 
-	TableAlignAttributePlugin,
 	TableWidthAttributePlugin,
 	TableHeightAttributePlugin,
+	TableAlignAttributePlugin,
 	TableBorderAttributePlugin,
+
 	// AddPuddingToTableCellPlugin,
 	// AddStyleOnTableInsertPlugin,
 	// TableAlignPlugin

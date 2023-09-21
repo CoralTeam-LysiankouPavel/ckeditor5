@@ -41,6 +41,8 @@ export default class TableAlignAttributePlugin extends Plugin {
     }
 
     __setAlignAttribute(attributeValue) {
+        const editor = this.editor;
+
         editor.model.change(writer => {
             const table = editor.model
                 .document

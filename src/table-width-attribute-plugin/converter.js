@@ -8,7 +8,12 @@ export function __modelAttributeToViewStyle(evt, data, conversionApi) {
     for (const childViewElement of figureViewElement.getChildren()) {
         if (childViewElement.name === 'table') {
             if (data.attributeNewValue !== null) {
-                const width = data.attributeNewValue;
+                let width = data.attributeNewValue;
+
+                if (width.endsWith('px')) {
+                    width = width.replace('px', '');
+                }
+
                 viewWriter.setAttribute(ATTRIBUTE_WIDTH, width, childViewElement);
                 viewWriter.setStyle(ATTRIBUTE_WIDTH, width + 'px', childViewElement);
             } else {
