@@ -11,7 +11,7 @@ export default class CustomLinkPlugin extends Plugin {
         const editor = this.editor;
         const model = editor.model;
 
-        model.schema.extend('$text', { allowAttributes: [ATTRIBUTE_ID]  });
+        model.schema.extend( 'paragraph', { allowAttributes: [ ATTRIBUTE_ID ] } );
 
         editor.commands.get('link').on(
             'execute',

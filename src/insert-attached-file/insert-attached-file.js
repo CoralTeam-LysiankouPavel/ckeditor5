@@ -8,7 +8,7 @@ export default class InsertAttachedFile extends Command {
 
         editor.model.change(writer => {
             setTimeout(() => {
-                editor.execute('insertCustomLink', { text: text, href: href, id: id });
+                editor.execute( 'link', text, id, href );
                 editor.execute('enter');
             });
         });
