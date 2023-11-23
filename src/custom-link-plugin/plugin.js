@@ -26,7 +26,7 @@ export default class CustomLinkPlugin extends Plugin {
                     const link = editor.model
                         .document
                         .selection
-                        .getFirstPosition()
+                        .getLastPosition()
                         .findAncestor('paragraph');
 
                     if (link) {

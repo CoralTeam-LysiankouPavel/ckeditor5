@@ -64,7 +64,7 @@ import UploadAdapter from '@ckeditor/ckeditor5-adapter-ckfinder/src/uploadadapte
 import ExtendParagraphSchemaPlugin from "./extend-paragraph-schema/plugin";
 import InsertBannerPlugin from "./insert-banner/plugin";
 import InsertFooterPlugin from "./insert-footer/plugin";
-import InsertAttachedFilePlugin from "./insert-attached-file/plugin";
+import AttachedFilePlugin from "./attached-file/plugin";
 import CustomLinkPlugin from "./custom-link-plugin/plugin";
 
 import AddStyleOnTableInsertPlugin from  "./add-style-on-table-insert/plugin";
@@ -136,7 +136,7 @@ ClassicEditor.builtinPlugins = [
 	ExtendParagraphSchemaPlugin,
 	InsertBannerPlugin,
 	InsertFooterPlugin,
-	InsertAttachedFilePlugin,
+	AttachedFilePlugin,
 	CustomLinkPlugin,
 
 	TableWidthAttributePlugin,
