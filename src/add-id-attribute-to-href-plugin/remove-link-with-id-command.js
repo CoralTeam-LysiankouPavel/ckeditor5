@@ -1,9 +1,13 @@
 import Command from "@ckeditor/ckeditor5-core/src/command";
 
-export default class RemoveAttachedFile extends Command {
+export default class RemoveLinkWithIdCommand extends Command {
     execute(options) {
         const { id } = options || { id: '' };
         const editor = this.editor;
+
+        if (!id) {
+            return
+        }
 
         editor.model.change( writer => {
             const range = writer.createRangeIn( editor.model.document.getRoot() );

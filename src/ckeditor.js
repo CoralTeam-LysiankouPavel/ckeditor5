@@ -64,8 +64,7 @@ import UploadAdapter from '@ckeditor/ckeditor5-adapter-ckfinder/src/uploadadapte
 import ExtendParagraphSchemaPlugin from "./extend-paragraph-schema/plugin";
 import InsertBannerPlugin from "./insert-banner/plugin";
 import InsertFooterPlugin from "./insert-footer/plugin";
-import AttachedFilePlugin from "./attached-file/plugin";
-import CustomLinkPlugin from "./custom-link-plugin/plugin";
+import AddIdAttributeToHrefPlugin from "./add-id-attribute-to-href-plugin/plugin";
 
 import AddStyleOnTableInsertPlugin from  "./add-style-on-table-insert/plugin";
 import AddPuddingToTableCellPlugin from "./add-padding-to-table-cell/plugin";
@@ -136,8 +135,7 @@ ClassicEditor.builtinPlugins = [
 	ExtendParagraphSchemaPlugin,
 	InsertBannerPlugin,
 	InsertFooterPlugin,
-	AttachedFilePlugin,
-	CustomLinkPlugin,
+	AddIdAttributeToHrefPlugin,
 
 	TableWidthAttributePlugin,
 	TableHeightAttributePlugin,
