@@ -10,10 +10,8 @@ export default class RemoveAttachedFile extends Command {
 
             for ( const value of range.getWalker() ) {
                 if ( value.item.is('element', 'paragraph') && value.item.getAttribute('id') === id) {
-                    setTimeout(() => {
-                        writer.remove(value.item);
-                        editor.execute( 'enter');
-                    });
+                    writer.remove(value.item);
+                    editor.execute( 'enter');
                 }
             }
         } );

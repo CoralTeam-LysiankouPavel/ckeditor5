@@ -1,6 +1,7 @@
 import {Plugin} from '@ckeditor/ckeditor5-core';
+import InsertCustomLinkCommand from "./insert-custom-link-command";
 
-export const ATTRIBUTE_ID = 'linkId';
+export const ATTRIBUTE_ID = 'id';
 
 export default class CustomLinkPlugin extends Plugin {
     static get pluginName() {
@@ -12,12 +13,13 @@ export default class CustomLinkPlugin extends Plugin {
         const model = editor.model;
 
         model.schema.extend( 'paragraph', { allowAttributes: [ ATTRIBUTE_ID ] } );
+        editor.commands.add('insertCustomLink', new InsertCustomLinkCommand(editor));
 
-        editor.commands.get('link').on(
+        editor.commands.get('insertCustomLink').on(
             'execute',
             (_, args) => {
                 editor.model.change(writer => {
-                    const id = args[1];
+                    const id = args[2];
 
                     if (!id) {
                         return
@@ -26,7 +28,7 @@ export default class CustomLinkPlugin extends Plugin {
                     const link = editor.model
                         .document
                         .selection
-                        .getLastPosition()
+                        .getFirstPosition()
                         .findAncestor('paragraph');
 
                     if (link) {
