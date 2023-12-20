@@ -29,7 +29,7 @@ import Indent from '@ckeditor/ckeditor5-indent/src/indent';
 import IndentBlock from '@ckeditor/ckeditor5-indent/src/indentblock';
 import Italic from '@ckeditor/ckeditor5-basic-styles/src/italic';
 import Link from '@ckeditor/ckeditor5-link/src/link';
-import DocumentListProperties from '@ckeditor/ckeditor5-list/src/documentListproperties';
+import DocumentListProperties from '@ckeditor/ckeditor5-list/src/documentlistproperties';
 import MediaEmbed from '@ckeditor/ckeditor5-media-embed/src/mediaembed';
 import Paragraph from '@ckeditor/ckeditor5-paragraph/src/paragraph';
 import PasteFromOffice from '@ckeditor/ckeditor5-paste-from-office/src/pastefromoffice';
@@ -141,7 +141,7 @@ ClassicEditor.builtinPlugins = [
 	TableBorderAttributePlugin,
 
 	// AddPuddingToTableCellPlugin,
-	// AddStyleOnTableInsertPlugin,
+	AddStyleOnTableInsertPlugin,
 	// TableAlignPlugin
 ];
 
@@ -401,7 +401,28 @@ ClassicEditor.defaultConfig = {
 			'tableRow',
 			'mergeTableCells',
 			'tableCellProperties'
-		]
+		],
+
+		tableProperties: {
+			// Внутри этого блоки конструкции вида borderColors: false не работают.
+			// display: none для div'ов содержащих не нужные элементы выпадающего меню тоже не сработало, вставлял в scss файл ckeditor компонента.
+			defaultProperties: {
+				borderStyle: 'solid',
+				borderColor: 'black',
+				borderWidth: '1px',
+				alignment: 'left'
+			},
+			tableCellProperties: {
+				// такая конструкция работает, делая меню выбора disabled
+				borderColors: false,
+				backgroundColors: false,
+				defaultProperties: {
+					horizontalAlignment: 'center',
+					verticalAlignment: 'bottom',
+					padding: '5px'
+				}
+			}
+		}
 	},
 	link: {
         decorators: {

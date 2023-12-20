@@ -1,5 +1,6 @@
 import { Plugin } from 'ckeditor5/src/core';
-import { modelAttributeToViewStyle } from "./converter";
+
+export const ATTRIBUTE_BORDER = 'border';
 
 export default class AddStyleOnTableInsertPlugin extends Plugin {
     static get pluginName() {
@@ -9,11 +10,23 @@ export default class AddStyleOnTableInsertPlugin extends Plugin {
     init() {
         const editor = this.editor;
 
-        editor.conversion
-            .for('dataDowncast')
-            .add(
-                dispatcher => dispatcher.on('insert:table', modelAttributeToViewStyle),
-                { priority: 'low' }
-            );
+        editor.commands.get('insertTable').on(
+            'execute',
+            (_) => {
+                editor.model.change(writer => {
+
+                    const table = editor.model
+                        .document
+                        .selection
+                        .getFirstPosition()
+                        .findAncestor('table');
+
+                    if (table !== null) {
+                        writer.setAttribute(ATTRIBUTE_BORDER, '1px solid black', table);
+                    }
+                });
+            },
+            { priority: 'low' }
+        );
     }
 }
