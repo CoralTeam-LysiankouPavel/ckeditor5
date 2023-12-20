@@ -402,7 +402,10 @@ ClassicEditor.defaultConfig = {
 			'mergeTableCells',
 			'tableCellProperties'
 		],
+
 		tableProperties: {
+			// Внутри этого блоки конструкции вида borderColors: false не работают.
+			// display: none для div'ов содержащих не нужные элементы выпадающего меню тоже не сработало, вставлял в scss файл ckeditor компонента.
 			defaultProperties: {
 				borderStyle: 'solid',
 				borderColor: 'black',
@@ -410,6 +413,9 @@ ClassicEditor.defaultConfig = {
 				alignment: 'left'
 			},
 			tableCellProperties: {
+				// такая конструкция работает, делая меню выбора disabled
+				borderColors: false,
+				backgroundColors: false,
 				defaultProperties: {
 					horizontalAlignment: 'center',
 					verticalAlignment: 'bottom',
